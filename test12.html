@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Center Drawing Lines</title>
+
+  <style>
+    /* common */
+    *{margin:0; padding:0; box-sizing:border-box;}
+    body{background:#fff; color:#333; font-family:'Pretendard', sans-serif;}
+
+    .main {
+      height: 100vh;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .line_bx {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0; left: 0;
+      z-index: -1;
+    }
+
+    /* 상단선 */
+    .T_line {
+      width: 100%;
+      border-bottom: 1px solid #333;
+      position: absolute;
+      top: 100px; left: 0;
+      transform: scaleX(0);
+      transform-origin: left center;
+      animation: drawX 1s ease-out forwards;
+    }
+
+    /* 하단선 */
+    .B_line {
+      width: 100%;
+      border-top: 1px solid #333;
+      position: absolute;
+      bottom: 100px; left: 0;
+      transform: scaleX(0);
+      transform-origin: right center;
+      animation: drawX 1s ease-out forwards;
+      animation-delay: 0.3s;
+    }
+
+    /* 오른쪽선 */
+    .R_line {
+      height: 100vh;
+      border-right: 1px solid #333;
+      position: absolute;
+      top: 0; right: 100px;
+      transform: scaleY(0);
+      transform-origin: top center;
+      animation: drawY 1s ease-out forwards;
+      animation-delay: 0.6s;
+    }
+
+    /* 왼쪽선 */
+    .L_line {
+      height: 100vh;
+      border-right: 1px solid #333;
+      position: absolute;
+      top: 0; left: 100px;
+      transform: scaleY(0);
+      transform-origin:  bottom center;
+      animation: drawY 1s ease-out forwards;
+      animation-delay: 0.9s;
+    }
+
+    /* 애니메이션 정의 */
+    @keyframes drawX {
+      0% { transform: scaleX(0); }
+      100% { transform: scaleX(1); }
+    }
+
+    @keyframes drawY {
+      0% { transform: scaleY(0); }
+      100% { transform: scaleY(1); }
+    }
+
+    /* 중앙 타이틀 */
+    .main_tit {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      opacity: 0;
+      animation: fadeIn 1s ease forwards;
+      animation-delay: 1.4s;
+    }
+
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+
+    .main_tit h2 {
+      font-size: 48px;
+      margin: 10px 0;
+      letter-spacing: 2px;
+    }
+  </style>
+</head>
+<body>
+  <!-- s: section1 : main -->
+  <section class="main">
+    <div class="line_bx">
+      <div class="R_line"></div>
+      <div class="T_line"></div>
+      <div class="L_line"></div>
+      <div class="B_line"></div>
+    </div>
+    
+    <div class="main_tit">
+      <p class="acp">웹디자인 & 웹퍼블리셔</p>
+      <h2>PORTFOLIO</h2>
+      <p>중앙으로 모이는 라인 애니메이션</p>
+    </div>
+  </section>
+  <!-- e: section1 : main -->
+</body>
+</html>
